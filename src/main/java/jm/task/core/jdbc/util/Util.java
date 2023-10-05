@@ -8,15 +8,15 @@ public class Util {
     private String username = "root";
     private String password = "root";
 
-    private Connection conn;
+    private Connection connection = null;
 
     public Util() throws SQLException {
         System.out.println("Util");
         try  {
-            Connection conn = DriverManager.getConnection(dbURL, username, password);
-            if (conn != null) {
+            Connection connection = DriverManager.getConnection(dbURL, username, password);
+            if (connection != null) {
                 System.out.println("Connected");
-                this.conn = conn;
+                this.connection = connection;
             }
         } catch (SQLException ex) {
             System.out.println("Util 2");
@@ -24,7 +24,7 @@ public class Util {
         }
     }
 
-    public Connection getConn() {
-        return conn;
+    public Connection getConnection() {
+        return connection;
     }
 }

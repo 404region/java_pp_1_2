@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         // реализуйте алгоритм здесь
         Util util = new Util();
-        Connection conn = util.getConn();
+        Connection connection = util.getConnection();
         System.out.println("x");
 
     }

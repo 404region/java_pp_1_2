@@ -9,8 +9,6 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        Util util = new Util();
-        Connection connection = util.getConnection();
         UserDao userDao = new UserDaoJDBCImpl();
         userDao.dropUsersTable();
 

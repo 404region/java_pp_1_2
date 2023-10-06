@@ -14,9 +14,8 @@ public class Util {
     }
 
     public Connection getConnection() {
-
         Connection connection = null;
-        System.out.println("Util");
+
         try  {
             connection = DriverManager.getConnection(dbURL, username, password);
             if (connection != null) {
@@ -24,7 +23,7 @@ public class Util {
                 connection = connection;
             }
         } catch (SQLException ex) {
-            System.out.println("Util 2");
+            System.out.println("Error");
             ex.printStackTrace();
         }
         return connection;

@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class UserDaoJDBCImpl implements UserDao {
-    private Util util;
+    private final Util util;
     private int usersCount = 0;
 
     {
@@ -21,8 +21,8 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
-    private Connection connection = util.getConnection();
-    private Statement statement;
+    private final Connection connection = util.getConnection();
+    private final Statement statement;
 
     {
         try {
@@ -79,7 +79,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 + " age ) VALUES ("
                 + "?, ?, ?, ?)";
 
-        try (PreparedStatement st = connection.prepareStatement(query);) {
+        try (PreparedStatement st = connection.prepareStatement(query)) {
             st.setInt(1, ++usersCount);
             st.setString(2, name);
             st.setString(3, lastName);
@@ -94,7 +94,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-        try (Statement statement = connection.createStatement();) {
+        try (Statement statement = connection.createStatement()) {
             String sql = "DELETE FROM Users " +
                     "WHERE id =" + id;
             System.out.println("User with id " + id + " was delete.");
@@ -128,7 +128,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         String sql = "SELECT * FROM Users";
-        try (ResultSet rs = statement.executeQuery(sql);) {
+        try (ResultSet rs = statement.executeQuery(sql)) {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 removeUserById(id);

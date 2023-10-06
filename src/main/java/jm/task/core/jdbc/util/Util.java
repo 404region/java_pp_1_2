@@ -8,23 +8,25 @@ public class Util {
     private String username = "root";
     private String password = "root";
 
-    private Connection connection = null;
 
     public Util() throws SQLException {
+
+    }
+
+    public Connection getConnection() {
+
+        Connection connection = null;
         System.out.println("Util");
         try  {
-            Connection connection = DriverManager.getConnection(dbURL, username, password);
+            connection = DriverManager.getConnection(dbURL, username, password);
             if (connection != null) {
                 System.out.println("Connected");
-                this.connection = connection;
+                connection = connection;
             }
         } catch (SQLException ex) {
             System.out.println("Util 2");
             ex.printStackTrace();
         }
-    }
-
-    public Connection getConnection() {
         return connection;
     }
 }

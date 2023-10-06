@@ -20,7 +20,6 @@ public class Util {
             connection = DriverManager.getConnection(dbURL, username, password);
             if (connection != null) {
                 System.out.println("Connected");
-                connection = connection;
             }
         } catch (SQLException ex) {
             System.out.println("Error");

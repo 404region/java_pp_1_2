@@ -1,6 +1,4 @@
 package jm.task.core.jdbc.dao;
-
-import com.mysql.cj.jdbc.result.ResultSetImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 

@@ -8,18 +8,10 @@ import java.util.List;
 
 
 public class UserDaoJDBCImpl implements UserDao {
-    private final Util util;
+
     private int usersCount = 0;
 
-    {
-        try {
-            util = new Util();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private final Connection connection = util.getConnection();
+    private final Connection connection = Util.getConnection();
     private final Statement statement;
 
     {

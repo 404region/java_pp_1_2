@@ -12,6 +12,7 @@ public class Main {
         Util util = new Util();
         Connection connection = util.getConnection();
         UserDao userDao = new UserDaoJDBCImpl();
+        userDao.dropUsersTable();
 
         userDao.createUsersTable();
         userDao.createUsersTable();
@@ -22,7 +23,7 @@ public class Main {
         userDao.saveUser("Name4", "LastName4", (byte) 38);
 
         userDao.removeUserById(1);
-        userDao.getAllUsers();
+        System.out.println(userDao.getAllUsers());
         userDao.cleanUsersTable();
         //userDao.dropUsersTable();
 

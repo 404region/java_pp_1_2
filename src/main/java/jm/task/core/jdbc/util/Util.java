@@ -4,16 +4,16 @@ import java.sql.*;
 
 public class Util {
     // реализуйте настройку соеденения с БД
-    private final String dbURL = "jdbc:mysql://localhost:3306/root";
-    private final String username = "root";
-    private final String password = "root";
+    private static final String dbURL = "jdbc:mysql://localhost:3306/root";
+    private static final String username = "root";
+    private static final String password = "root";
 
 
     public Util() throws SQLException {
 
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
 
         try  {

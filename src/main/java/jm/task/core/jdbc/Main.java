@@ -1,9 +1,16 @@
 package jm.task.core.jdbc;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
-        UserServiceImpl userService = new UserServiceImpl();
+        UserDaoHibernateImpl userDaoHibernateImpl = new UserDaoHibernateImpl();
+        userDaoHibernateImpl.saveUser("test", "Test", (byte) 20);
+
+        //UserServiceImpl userService = new UserServiceImpl();
+        //userService.saveUser("Name1", "LastName1", (byte) 20);
+
+        /*UserServiceImpl userService = new UserServiceImpl();
         userService.dropUsersTable();
 
         userService.createUsersTable();
@@ -17,7 +24,7 @@ public class Main {
         userService.removeUserById(1);
         System.out.println(userService.getAllUsers());
         userService.cleanUsersTable();
-        userService.dropUsersTable();
+        userService.dropUsersTable();*/
 
     }
 }

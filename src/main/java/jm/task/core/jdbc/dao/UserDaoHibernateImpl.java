@@ -4,10 +4,16 @@ import jm.task.core.jdbc.model.User;
 
 import java.util.List;
 
+import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 public class UserDaoHibernateImpl implements UserDao {
     public UserDaoHibernateImpl() {
 
     }
+
 
 
     @Override
@@ -22,7 +28,20 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-
+        Transaction transaction = null;
+        try (Session session = Util.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.save(new User(name, lastName, age));
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -32,6 +51,9 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
+        /*try (Session session = Util.getSessionFactory().openSession()) {
+            return session.createQuery("from Users", User.class).list();
+        }*/
         return null;
     }
 

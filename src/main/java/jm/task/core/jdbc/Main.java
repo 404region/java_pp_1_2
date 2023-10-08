@@ -10,8 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
         UserService userService = new UserServiceImpl();
-        userService.dropUsersTable();
-        userService.createUsersTable();
+        //userService.dropUsersTable();
+        //userService.createUsersTable();
+        userService.saveUser("testName", "testLastName", Byte.valueOf((byte) 28));
         /*userService.dropUsersTable();
         userService.createUsersTable();
         userService.saveUser("testName", "testLastName", Byte.valueOf((byte) 28));
